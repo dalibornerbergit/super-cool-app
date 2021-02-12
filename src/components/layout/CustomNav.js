@@ -8,16 +8,12 @@ const CustomNav = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link style={{ color: "#fff" }}>
-                        <Link to="/">
-                            Home
+                    <Link className="mx-2" to="/">
+                        Home
                         </Link>
-                    </Nav.Link>
-                    <Nav.Link style={{ color: "#fff" }}>
-                        <Link to="/photos">
-                            Photos
+                    <Link className="mx-2" to="/photos/1">
+                        Photos
                         </Link>
-                    </Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
