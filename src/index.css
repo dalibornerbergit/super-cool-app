@@ -11,6 +11,15 @@ html {
     max-width: 1000px;
 }
 
+.pagination {
+    list-style: none;
+    justify-content: center;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
 .footer {
     position: fixed;
     left: 0;

@@ -1,6 +1,6 @@
 import { Table } from "react-bootstrap";
 import { useState, useEffect } from "react"
-import TrashCanCircleIcon from 'mdi-react/TrashCanCircleIcon';
+import TrashIcon from 'mdi-react/TrashIcon';
 import { userServices } from "../../services/UserServices"
 
 const UsersList = () => {
@@ -11,7 +11,6 @@ const UsersList = () => {
         setUsers(
             users.filter(user => user.id !== id)
         )
-        console.log("Deleted")
     }
 
     useEffect(() => {
@@ -40,7 +39,7 @@ const UsersList = () => {
                                 <td>{user.name}</td>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
-                                <td style={{ textAlign: "center" }}><TrashCanCircleIcon onClick={() => deleteUser(user.id)} color="red" /></td>
+                                <td style={{ textAlign: "center" }}><TrashIcon className="pointer" onClick={() => deleteUser(user.id)} color="red" /></td>
                             </tr>
                         ))}
                     </tbody>
