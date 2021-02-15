@@ -1,29 +1,51 @@
 import { Table } from "react-bootstrap";
+import { useState, useEffect } from "react"
 import TrashCanCircleIcon from 'mdi-react/TrashCanCircleIcon';
+import { userServices } from "../../services/UserServices"
 
-const UsersList = ({ users, onDelete }) => {
+const UsersList = () => {
+    const [users, setUsers] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    const deleteUser = (id) => {
+        setUsers(
+            users.filter(user => user.id !== id)
+        )
+        console.log("Deleted")
+    }
+
+    useEffect(() => {
+        userServices.getUsers()
+            .then((res) => {
+                setUsers(res.data)
+                setLoading(false)
+            }).catch(err => err)
+    }, [])
 
     return (
-        <Table className="table" striped bordered hover variant="dark">
-            <thead className="m-2">
-                <tr>
-                    <th>Name</th>
-                    <th>Usrname</th>
-                    <th>Email</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user) => (
-                    <tr key={user.id}>
-                        <td>{user.name}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td style={{ textAlign: "center" }}><TrashCanCircleIcon onClick={() => onDelete(user.id)} color="red" /></td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
+        <>
+            {loading ? "Loading" :
+                <Table className="table mx-auto my-4" striped bordered hover variant="dark">
+                    <thead className="m-2">
+                        <tr>
+                            <th>Name</th>
+                            <th>Usrname</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map((user) => (
+                            <tr key={user.id}>
+                                <td>{user.name}</td>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td style={{ textAlign: "center" }}><TrashCanCircleIcon onClick={() => deleteUser(user.id)} color="red" /></td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>}
+        </>
     );
 }
 

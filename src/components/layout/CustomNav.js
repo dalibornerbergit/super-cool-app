@@ -11,7 +11,10 @@ const CustomNav = () => {
                     <Link className="mx-2" to="/">
                         Home
                         </Link>
-                    <Link className="mx-2" to="/photos/1">
+                    <Link className="mx-2" to="/users">
+                        Users
+                        </Link>
+                    <Link className="mx-2" to="/photos">
                         Photos
                         </Link>
                 </Nav>

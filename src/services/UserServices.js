@@ -7,7 +7,7 @@ export const userServices = {
 }
 
 async function getUsers() {
-   return axios.get(URL)
+    return axios.get(URL)
         .then((res) => res).catch((err) => {
             console.log(err)
             return err.response
